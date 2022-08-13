@@ -17,7 +17,6 @@ class BaseSystem(BaseModel):
 
     agents: List[Any]
 
-
     @validator("agents")
     def agents_are_of_allowed_type(cls, agents, values):
         allowed_agents = values["allowed_agents"]
@@ -32,7 +31,9 @@ class BaseSystem(BaseModel):
         agent_types = [type(x).__name__ for x in agents]
         for agent_type, count in dict(Counter(agent_types)).items():
             if max_allowed_agents.get(agent_type) and max_allowed_agents.get(agent_type) < count:
-                raise ValueError(f"{agent_type} has more than the configured maximum allowed agents ({count} > {max_allowed_agents[agent_type]}).")
+                raise ValueError(
+                    f"{agent_type} has more than the configured maximum allowed agents ({count} > {max_allowed_agents[agent_type]})."
+                )
         return agents
 
     @validator("agents")
@@ -41,7 +42,9 @@ class BaseSystem(BaseModel):
         agent_types = [type(x).__name__ for x in agents]
         for agent_type, count in dict(Counter(agent_types)).items():
             if min_allowed_agents.get(agent_type, 0) > count:
-                raise ValueError(f"{agent_type} has less than the configured minimum allowed agents ({count} > {min_allowed_agents.get(agent_type, 0)}).")
+                raise ValueError(
+                    f"{agent_type} has less than the configured minimum allowed agents ({count} > {min_allowed_agents.get(agent_type, 0)})."
+                )
         return agents
 
     @property

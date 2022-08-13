@@ -10,7 +10,7 @@ class LoktaVolterraPreyAgent(BaseAgent):
     pred_interaction: float = 1
 
     def population_rate(self, populations):
-        rate = self.population * (self.self_interaction + self.pred_interaction * populations['pred'])
+        rate = self.population * (self.self_interaction + self.pred_interaction * populations["pred"])
         return rate
 
     def time_evolve(self):
@@ -24,7 +24,6 @@ class LoktaVolterraPreyAgent(BaseAgent):
 
 
 class LoktaVolterraPredatorAgent(BaseAgent):
-
     def time_evolve(self):
         self.population = 0.5
 
@@ -32,7 +31,12 @@ class LoktaVolterraPredatorAgent(BaseAgent):
     def random_agent(cls, **kwargs) -> LoktaVolterraPredatorAgent:
         return cls(**kwargs)
 
+
 class CompetitiveLoktaVolterraAgent(BaseAgent):
+
+    growth_rate: float = 0.5
+    population: float = 1
+    carrying_capacity: float = 10
 
     def time_evolve(self):
         pass
