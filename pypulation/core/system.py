@@ -1,6 +1,7 @@
 from pydantic import BaseModel, validator
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Callable
 from collections import Counter
+from scipy.integrate import ode
 
 
 class BaseSystem(BaseModel):
@@ -8,7 +9,7 @@ class BaseSystem(BaseModel):
     The abstract base class for generic systems.
     """
 
-    time: int = 0
+    time: float = 0
 
     # for validation
     allowed_agents: List[object]
@@ -51,13 +52,28 @@ class BaseSystem(BaseModel):
     def num_agents(self):
         return len(agents)
 
-    def update_time(self, t):
+    def update_time(self, t: float):
         self.time = t
 
-    def evolve_system(self):
-        for x in self.agents:
-            # need to be able to pass populations in here...
-            x.time_evolve()
+    def system_ode(self, agent: Any) -> Callable:
+        """
+        Returns a function that is the time delta for the given agent.
+        This is a required method for any systems - it can access the system (via self) or the agent in question via the agent argument.
+        """
+        raise NotImplementedError
+
+    def evolve_system(self, timestep: float):
+        # maybe give option of non symplectic?
+        for agent in self.agents:
+            f = self.system_ode(agent)
+            r = ode(f).set_integrator('zvode', method='bdf')
+            r.set_initial_value(agent.population, self.time)
+            t1 = 10
+            dt = 1
+            print(f"initial: {r.t, r.y}")
+            while r.successful() and r.t < t1:
+                print(r.t+dt, r.integrate(r.t+dt))
+            pass
 
     @classmethod
     def initialise_system_from_agents(agents: List[Any], **kwargs):
