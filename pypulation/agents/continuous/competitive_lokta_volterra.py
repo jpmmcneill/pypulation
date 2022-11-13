@@ -1,10 +1,9 @@
 from __future__ import annotations
-from pydantic import BaseModel
 
-from pypulation.core.continuous.agent import BaseAgent
+from pypulation.core.continuous.agent import ContinuousAgent
 
 
-class CompetitiveLoktaVolterraAgent(BaseAgent):
+class CompetitiveLoktaVolterraAgent(ContinuousAgent):
 
     growth_rate: float = 0.5
     population: float = 1

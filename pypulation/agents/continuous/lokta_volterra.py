@@ -1,10 +1,9 @@
 from __future__ import annotations
-from pydantic import BaseModel
 
-from pypulation.core.continuous.agent import BaseAgent
+from pypulation.core.continuous.agent import ContinuousAgent
 
 
-class LoktaVolterraPreyAgent(BaseAgent):
+class LoktaVolterraPreyAgent(ContinuousAgent):
 
     self_interaction: float = 1
     pred_interaction: float = 1
@@ -23,7 +22,7 @@ class LoktaVolterraPreyAgent(BaseAgent):
         return cls(**kwargs)
 
 
-class LoktaVolterraPredatorAgent(BaseAgent):
+class LoktaVolterraPredatorAgent(ContinuousAgent):
     def time_evolve(self):
         self.population = 0.5
 
