@@ -1,4 +1,7 @@
+from pydantic import root_validator
+
 from pypulation.core.base.system import BaseSystem
+from pypulation.core.discrete.agent import DiscreteAgent
 
 
 class DiscreteSystem(BaseSystem):
@@ -14,4 +17,11 @@ class DiscreteSystem(BaseSystem):
             # TODO: fix this (or make this opt out)
             agent.time_evolve()
         self.time += 1
+
+    @root_validator(pre=True)
+    def agents_are_discrete(cls, values):
+        for v in values["agents"]:
+            if not issubclass(type(v), DiscreteAgent):
+                raise ValueError(f"Agent must be of Discrete Type. {type(v)} was not")
+        return values
 
