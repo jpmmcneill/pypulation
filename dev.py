@@ -1,5 +1,5 @@
 from pypulation.core.system import BaseSystem
-from pypulation.systems.competitive_lokta_volterra import CompetitiveLoktaVolterra
+from pypulation.systems.continuous.competitive_lokta_volterra import CompetitiveLoktaVolterra
 from networkx import fast_gnp_random_graph, draw
 import matplotlib.pyplot as plt
 

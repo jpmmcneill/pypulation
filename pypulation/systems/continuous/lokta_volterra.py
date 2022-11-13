@@ -3,7 +3,7 @@ from typing import List, Union, Any, Callable
 from pydantic import validator
 
 from pypulation.core.system import BaseSystem
-from pypulation.agents.lokta_volterra import (
+from pypulation.agents.continuous.lokta_volterra import (
     LoktaVolterraPreyAgent,
     LoktaVolterraPredatorAgent,
     CompetitiveLoktaVolterraAgent,

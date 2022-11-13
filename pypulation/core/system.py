@@ -65,7 +65,7 @@ class BaseSystem(BaseModel):
     def evolve_system(self, timestep: float):
         # maybe give option of non symplectic?
         for agent in self.agents:
-            f = self.system_ode(agent)
+            f: callable = self.system_ode(agent)
             r = ode(f).set_integrator('zvode', method='bdf')
             r.set_initial_value(agent.population, self.time)
             t1 = 10
