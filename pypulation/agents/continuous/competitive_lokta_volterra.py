@@ -1,7 +1,7 @@
 from __future__ import annotations
 from pydantic import BaseModel
 
-from pypulation.core.agent import BaseAgent
+from pypulation.core.continuous.agent import BaseAgent
 
 
 class CompetitiveLoktaVolterraAgent(BaseAgent):

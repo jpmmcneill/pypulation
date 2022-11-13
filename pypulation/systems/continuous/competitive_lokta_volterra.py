@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy
 
 
-from pypulation.core.system import BaseSystem
+from pypulation.core.continuous.system import BaseSystem
 from pypulation.agents.continuous.competitive_lokta_volterra import CompetitiveLoktaVolterraAgent
 
 
