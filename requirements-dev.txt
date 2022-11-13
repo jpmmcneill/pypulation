@@ -1,4 +1,6 @@
+-r requirements.txt
 black==22.3.0
 mypy==0.910
 pytest-env==0.6.2
 pytest==6.2.5
+matplotlib==3.6.2

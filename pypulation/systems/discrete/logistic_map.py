@@ -16,7 +16,7 @@ class LogisticMap(DiscreteSystem):
     max_allowed_agents: Dict[str, int] = {"LogisticMapAgent": 1}
 
     @classmethod
-    def initialise_system_from_agents(cls, agents: List[Any], **kwargs) -> LogisticMap:
+    def initialise_system_from_agents(cls, agents: List[LogisticMapAgent], **kwargs) -> LogisticMap:
         """
         Returns an instance of the LogisticMap class with agents specified by the agents input.
         """
@@ -27,11 +27,11 @@ class LogisticMap(DiscreteSystem):
         """
         Returns an instance of the LogisticMap class with a randomly generated agent.
         """
-        return None
+        raise NotImplementedError
 
     @staticmethod
     def random_agents() -> List[LogisticMapAgent]:
         """
         Returns a list of randomised Agents (aka Species).
         """
-        return None
+        raise NotImplementedError
