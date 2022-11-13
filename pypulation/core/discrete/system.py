@@ -15,7 +15,7 @@ class DiscreteSystem(BaseSystem):
         for agent in self.agents:
             # Problem here is that the populations all change one after the other. Need to do them all at the same time...
             # TODO: fix this (or make this opt out)
-            agent.time_evolve()
+            agent._time_evolve()
         self.time += 1
 
     @root_validator(pre=True)
