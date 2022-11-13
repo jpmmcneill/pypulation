@@ -22,7 +22,7 @@ class LoktaVolterra(ContinuousSystem):
     max_allowed_agents: Dict[str, int] = {"LoktaVolterraPreyAgent": 1, "LoktaVolterraPredatorAgent": 1}
 
     @classmethod
-    def initialise_system_from_agents(agents: List[Any], **kwargs) -> LoktaVolterra:
+    def initialise_system_from_agents(cls, agents: List[Any], **kwargs) -> LoktaVolterra:
         """
         Returns an instance of the LoktaVolterra class with agents specified by the agents input.
         """

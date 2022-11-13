@@ -42,7 +42,7 @@ class CompetitiveLoktaVolterra(ContinuousSystem):
         return clva_ode
 
     @classmethod
-    def initialise_system_from_agents(agents: List[Any], **kwargs) -> CompetitiveLoktaVolterra:
+    def initialise_system_from_agents(cls, agents: List[Any], **kwargs) -> CompetitiveLoktaVolterra:
         """
         Returns an instance of the CompetitiveLoktaVolterra class with agents specified by the agents input.
         """
