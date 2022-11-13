@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import List, Union, Any, Callable
 from pydantic import validator
 
-from pypulation.core.continuous.system import BaseSystem
+from pypulation.core.continuous.system import ContinuousSystem
 from pypulation.agents.continuous.lokta_volterra import (
     LoktaVolterraPreyAgent,
     LoktaVolterraPredatorAgent,
@@ -10,7 +10,7 @@ from pypulation.agents.continuous.lokta_volterra import (
 )
 
 
-class LoktaVolterra(BaseSystem):
+class LoktaVolterra(ContinuousSystem):
     """
     A classical Lokta Volterra System.
     See https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations for more information.

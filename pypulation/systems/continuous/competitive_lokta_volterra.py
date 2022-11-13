@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 import numpy
 
 
-from pypulation.core.continuous.system import BaseSystem
+from pypulation.core.continuous.system import ContinuousSystem
 from pypulation.agents.continuous.competitive_lokta_volterra import CompetitiveLoktaVolterraAgent
 
 
-class CompetitiveLoktaVolterra(BaseSystem):
+class CompetitiveLoktaVolterra(ContinuousSystem):
     """
     A competitive Lokta Volterra System. No direct predators.
     See https://en.wikipedia.org/wiki/Competitive_Lotka%E2%80%93Volterra_equations for more information
